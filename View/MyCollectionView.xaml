@@ -1,0 +1,17 @@
+﻿<Window x:Class="MyRecordApp.View.MyCollectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyRecordApp.View"
+        mc:Ignorable="d"
+        Title="MyCollectionView" Height="450" Width="800"
+        Left="800"
+        Top="300">
+    <Grid Margin="10">
+        <ListBox x:Name="MyRecords" BorderThickness="4">
+          
+        </ListBox>
+
+    </Grid>
+</Window>

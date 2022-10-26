@@ -25,13 +25,13 @@ namespace MyRecordApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string accessToken {
+        [global::System.Configuration.DefaultSettingValueAttribute("Not Set")]
+        public string AccessToken {
             get {
-                return ((string)(this["accessToken"]));
+                return ((string)(this["AccessToken"]));
             }
             set {
-                this["accessToken"] = value;
+                this["AccessToken"] = value;
             }
         }
     }

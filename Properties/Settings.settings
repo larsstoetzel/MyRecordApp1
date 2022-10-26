@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MyRecordApp.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="accessToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="AccessToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not Set</Value>
     </Setting>
   </Settings>
 </SettingsFile>

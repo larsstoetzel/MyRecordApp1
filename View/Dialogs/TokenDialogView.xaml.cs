@@ -1,17 +1,4 @@
-﻿using MyRecordApp.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace MyRecordApp.View.Dialogs
 {
@@ -23,6 +10,7 @@ namespace MyRecordApp.View.Dialogs
         public TokenDialogView()
         {
             InitializeComponent();
+            tbxEnterToken.Focus();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -32,8 +20,10 @@ namespace MyRecordApp.View.Dialogs
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-
-          this.Close();
+            Properties.Settings.Default.AccessToken = tbxEnterToken.ToString();
+            Properties.Settings.Default.Save();
+            this.Close();
+          
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

@@ -1,7 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MyRecordApp.Model;
+using MyRecordApp.Properties;
+using MyRecordApp.Services;
 using MyRecordApp.ViewModel;
+using Refit;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace MyRecordApp
@@ -25,6 +29,11 @@ namespace MyRecordApp
             var services = new ServiceCollection();
             services.AddDbContext<RecordContext>();
             services.AddTransient<SettingsViewModel>();
+            services.AddTransient<AuthorizationHeaderHandler>();
+            services.AddSingleton(RestService.For<IDiscogsApi>("https://api.discogs.com", new RefitSettings
+            {
+                AuthorizationHeaderValueGetter = ()=> Task.FromResult(Settings.Default.AccessToken)
+            }));
             return services.BuildServiceProvider();
         }
        }

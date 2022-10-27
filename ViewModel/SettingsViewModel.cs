@@ -1,20 +1,23 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using MyRecordApp.Properties;
-using MyRecordApp.View.Dialogs;
-using System.Windows;
-using System.Windows.Input;
+using MyRecordApp.Services;
+using System.Threading.Tasks;
 
 namespace MyRecordApp.ViewModel
 {
     public class SettingsViewModel
     {
-        public SettingsViewModel()
-        {
-            SaveTokenCommand = new RelayCommand<string>(SaveToken);
+        private readonly IDiscogsApi _discogsApi;
+        public SettingsViewModel(IDiscogsApi api)
+        {            
+            SaveTokenCommand = new AsyncRelayCommand<string>(SaveToken);
+            _discogsApi = api;
         }
-        public IRelayCommand <string> SaveTokenCommand { get; }
-        public void SaveToken(string accessToken)
+        
+        public IAsyncRelayCommand <string> SaveTokenCommand { get; }
+        public async Task SaveToken(string accessToken)
         {
+            var identity = await _discogsApi.CheckAccessTokenAsync(accessToken);      
             Settings.Default.AccessToken = accessToken;
             Settings.Default.Save();
         }

@@ -12,6 +12,7 @@ namespace MyRecordApp
     public partial class App : Application
     {
         public IServiceProvider Services { get; }
+        public new static App Current => (App)Application.Current;
         public App()
         {
             Services = ConfigureServices();
@@ -23,7 +24,7 @@ namespace MyRecordApp
         {
             var services = new ServiceCollection();
             services.AddDbContext<RecordContext>();
-            services.AddSingleton<SettingsViewModel>();
+            services.AddTransient<SettingsViewModel>();
             return services.BuildServiceProvider();
         }
        }

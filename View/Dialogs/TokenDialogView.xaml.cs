@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MyRecordApp.ViewModel;
+using System.Windows;
 
 namespace MyRecordApp.View.Dialogs
 {
@@ -10,24 +12,21 @@ namespace MyRecordApp.View.Dialogs
         public TokenDialogView()
         {
             InitializeComponent();
+            DataContext = App.Current.Services.GetService<SettingsViewModel>();
             tbxEnterToken.Focus();
         }
+        public SettingsViewModel ViewModel => (SettingsViewModel)DataContext;
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
-
-        private void btnOk_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.AccessToken = tbxEnterToken.ToString();
-            Properties.Settings.Default.Save();
-            this.Close();
-          
-        }
+        
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        
     }
 }

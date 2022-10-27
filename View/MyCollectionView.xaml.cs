@@ -23,5 +23,15 @@ namespace MyRecordApp.View
         {
             InitializeComponent();
         }
+
+        private void MyRecords_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void btnAddSearch_Click(object sender, RoutedEventArgs e)
+        {
+            RecordAddSearchView recordAddSearchView = new RecordAddSearchView();
+            recordAddSearchView.Show();
+        }
     }
 }

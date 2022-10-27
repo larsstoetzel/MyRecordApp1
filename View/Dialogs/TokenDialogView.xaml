@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        xmlns:app ="clr-namespace:MyRecordApp.ViewModel"
+        d:DataContext="{d:DesignInstance app:SettingsViewModel,IsDesignTimeCreatable=True}"
         Title="Enter Token" MaxHeight="200" MinWidth="400"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
@@ -46,7 +48,9 @@
 
 
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Name="btnOk" Click="btnOk_Click" IsDefault="True">OK</Button>
+            <Button Name="btnOk" Click="btnOk_Click" Command="{Binding SaveTokenCommand}"
+                    CommandParameter="{Binding ElementName=tbxEnterToken,Path=Text}"
+                    IsDefault="True">OK</Button>
             <Button Name="btnCancel" IsCancel="True">Cancel</Button>
         </StackPanel>
     </Grid >

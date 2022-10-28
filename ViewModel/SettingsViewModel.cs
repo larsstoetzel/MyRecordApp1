@@ -17,9 +17,14 @@ namespace MyRecordApp.ViewModel
         public IAsyncRelayCommand <string> SaveTokenCommand { get; }
         public async Task SaveToken(string accessToken)
         {
-            var identity = await _discogsApi.CheckAccessTokenAsync(accessToken);      
-            Settings.Default.AccessToken = accessToken;
-            Settings.Default.Save();
+            var response = await _discogsApi.CheckAccessTokenAsync("Discogs token=" + accessToken);
+            if (response.IsSuccessStatusCode)
+            {
+                Settings.Default.AccessToken = accessToken;
+                Settings.Default.Save();
+            }
+            else { }
+            
         }
     }
     

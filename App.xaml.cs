@@ -30,10 +30,8 @@ namespace MyRecordApp
             services.AddDbContext<RecordContext>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<AuthorizationHeaderHandler>();
-            services.AddSingleton(RestService.For<IDiscogsApi>("https://api.discogs.com", new RefitSettings
-            {
-                AuthorizationHeaderValueGetter = ()=> Task.FromResult(Settings.Default.AccessToken)
-            }));
+            services.AddRefitClient<IDiscogsApi>().ConfigureHttpClient(x => x.BaseAddress = new Uri("https://api.discogs.com"))
+                .AddHttpMessageHandler<AuthorizationHeaderHandler>();
             return services.BuildServiceProvider();
         }
        }

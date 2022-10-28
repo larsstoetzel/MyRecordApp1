@@ -14,8 +14,11 @@ namespace MyRecordApp.Services
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var token = Settings.Default.AccessToken;
-            request.Headers.Authorization = new AuthenticationHeaderValue("Discogs token=", token);
+           if(request.Headers.Authorization == null)
+            {
+                var token = Settings.Default.AccessToken;
+                request.Headers.Authorization = new AuthenticationHeaderValue("Discogs token=", token);
+            }
             return await base.SendAsync(request, cancellationToken);
         }
     }

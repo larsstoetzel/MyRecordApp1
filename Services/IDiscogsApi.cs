@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace MyRecordApp.Services
 {
+    [Headers("User-Agent:MyRecordApp")]
     public interface IDiscogsApi
     {
         [Get("/oauth/identity")]
-        Task<DiscogsIdentity> CheckAccessTokenAsync([Authorize("Discogs token=")]string authorization);
+        Task<IApiResponse<DiscogsIdentity>> CheckAccessTokenAsync([Header("Authorization")]string authorization);
     }
 }

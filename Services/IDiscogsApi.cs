@@ -1,9 +1,6 @@
 ﻿using MyRecordApp.Model;
+using MyRecordApp.Model.Discogs;
 using Refit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyRecordApp.Services
@@ -13,5 +10,11 @@ namespace MyRecordApp.Services
     {
         [Get("/oauth/identity")]
         Task<IApiResponse<DiscogsIdentity>> CheckAccessTokenAsync([Header("Authorization")]string authorization);
+
+        [Get("/database/search?q={query}&format=vinyl")]
+        Task<IApiResponse<SearchResponse>> SearchAsync(string query);
+
+        [Get("/release/{id}")]
+        Task<IApiResponse<ReleaseResponse>> GetReleaseAsync(int id);
     }
 }

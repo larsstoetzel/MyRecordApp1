@@ -32,6 +32,7 @@ namespace MyRecordApp
             services.AddTransient<AuthorizationHeaderHandler>();
             services.AddRefitClient<IDiscogsApi>().ConfigureHttpClient(x => x.BaseAddress = new Uri("https://api.discogs.com"))
                 .AddHttpMessageHandler<AuthorizationHeaderHandler>();
+            services.AddTransient<SearchViewModel>();
             return services.BuildServiceProvider();
         }
        }

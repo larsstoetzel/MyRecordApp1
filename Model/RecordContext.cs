@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyRecordApp.Model.Entities;
 using System;
-using System.Collections.Generic;
 
 namespace MyRecordApp.Model
 {

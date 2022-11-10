@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyRecordApp.View"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="RecordDetailView" Height="800" Width="800">
     <Grid Margin="5,5,5,5">
-        <TextBlock x:Name="tbTitle" HorizontalAlignment="Left" Height="54" Margin="56,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="301" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="20">
+        <TextBlock x:Name="tblTitle" HorizontalAlignment="Left" Height="54" Margin="10,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="347" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="20">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,7 +18,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock x:Name="tbArtist" HorizontalAlignment="Left" Height="54" Margin="56,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
+        <TextBlock x:Name="tblArtist" HorizontalAlignment="Left" Height="54" Margin="10,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="346" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -27,7 +28,16 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock x:Name="tbLabel" HorizontalAlignment="Left" Height="54" Margin="56,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
+        <TextBlock x:Name="tblLabel" HorizontalAlignment="Left" Height="54" Margin="10,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="tblYear" HorizontalAlignment="Left" Height="54" Margin="10,200,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="343" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,20 +47,10 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock x:Name="tbYear" HorizontalAlignment="Left" Height="54" Margin="56,200,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.973"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <Image x:Name="imgCover" HorizontalAlignment="Left" Height="250" Width="250" Margin="395,20,0,0" VerticalAlignment="Top" />
-        <ListBox ScrollBar.Scroll="lbTracks_Scroll" x:Name="lbTracks" HorizontalAlignment="Left" Height="451" Margin="132,303,0,0" VerticalAlignment="Top" Width="445" d:ItemsSource="{d:SampleData ItemCount=5}" BorderThickness="3,3,1,1" FontSize="20"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="56" Margin="604,686,0,0" VerticalAlignment="Top" Width="176"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="56" Margin="604,613,0,0" VerticalAlignment="Top" Width="176"/>
+        <Image x:Name="imgCover"  HorizontalAlignment="Left" Height="250" Width="250" Margin="516,29,0,0" VerticalAlignment="Top" />
+        <ListBox ScrollBar.Scroll="lbTracks_Scroll" x:Name="lbTracks" HorizontalAlignment="Left" Height="451" Margin="10,303,0,0" VerticalAlignment="Top" Width="506" d:ItemsSource="{d:SampleData ItemCount=5}" BorderThickness="3,3,1,1" FontSize="20" SelectionChanged="lbTracks_SelectionChanged"/>
+        <Button Content="Delete" FontSize="20" HorizontalAlignment="Left" Height="82" Margin="542,660,0,0" VerticalAlignment="Top" Width="238"/>
+        <Button Content="Cancel" FontSize="20" HorizontalAlignment="Left" Height="75" Margin="542,557,0,0" VerticalAlignment="Top" Width="238" />
 
     </Grid>
 </Window>

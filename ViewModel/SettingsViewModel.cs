@@ -2,6 +2,7 @@
 using MyRecordApp.Properties;
 using MyRecordApp.Services;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyRecordApp.ViewModel
 {
@@ -23,7 +24,7 @@ namespace MyRecordApp.ViewModel
                 Settings.Default.AccessToken = accessToken;
                 Settings.Default.Save();
             }
-            else { }
+            else MessageBox.Show("Invalid Token", "InvalidToken",MessageBoxButton.OK ,MessageBoxImage.Error);
             
         }
     }

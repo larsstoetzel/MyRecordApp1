@@ -8,23 +8,24 @@
         ResizeMode="NoResize"
         Top="400"
         Left="600"
-        Title="RecordAddSearchView" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="650,348,0,0" VerticalAlignment="Top" Width="119" Height="36"/>
-        <Button x:Name="btnAddReecord" Content="Add to my&#xD;&#xA;Collection" HorizontalAlignment="Left" Margin="650,284,0,0" VerticalAlignment="Top" Width="119" Height="36"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="650,10,0,0" VerticalAlignment="Top" Width="119" Height="36"/>
-        <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Height="36" Margin="23,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="610"/>
-        <ListView Name="lvRecordSearch" Margin="23,58,167,50" SelectionChanged="lvRecordSearch_SelectionChanged">
+        Title="RecordAddSearchView" Height="450" Width="900"
+        xmlns:app ="clr-namespace:MyRecordApp.ViewModel"
+        d:DataContext="{d:DesignInstance app:SearchViewModel,IsDesignTimeCreatable=True}"
+>
+    <Grid Margin="0,0,10,0">
+        <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" HorizontalAlignment="Left" Margin="686,348,0,0" FontSize="20" VerticalAlignment="Top" Width="140" Height="36"/>
+        <Button x:Name="btnAddReecord" Content="Add to my&#xD;&#xA;Collection" FontSize="20" HorizontalAlignment="Left" Margin="686,259,0,0" VerticalAlignment="Top" Width="140" Height="59"/>
+        <Button Command="{Binding SearchCommand}"
+                CommandParameter="{Binding ElementName=tbxSearch, Path=Text}" 
+                x:Name="btnSearch" Content="Search" FontSize="20" HorizontalAlignment="Left" Margin="688,10,0,0" VerticalAlignment="Top" Width="140" Height="36"/>
+        <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Height="36" Margin="23,10,0,0" FontSize="20" VerticalAlignment="Top" Width="610"/>
+        <ListView SelectedIndex="{Binding SelectedIndex}" ItemsSource="{Binding Data}" 
+                  Name="lvRecordSearch" Margin="23,58,257,50" SelectionChanged="lvRecordSearch_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="320" DisplayMemberBinding="{Binding Title}">
+                    <GridViewColumn Width="520" DisplayMemberBinding="{Binding Path=Title}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="Title">Title</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Artist}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Artist">Artist</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn Width="80" DisplayMemberBinding="{Binding Year}">
@@ -35,5 +36,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Image Source="{Binding Thumb}"
+               HorizontalAlignment="Left" Height="186" Margin="664,58,0,0" VerticalAlignment="Top" Width="197"/>
     </Grid>
 </Window>

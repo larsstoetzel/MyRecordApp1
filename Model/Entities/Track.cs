@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyRecordApp.Model
+namespace MyRecordApp.Model.Entities
 {
-    public class DiscogsIdentity 
+    public class Track
     {
         public int Id { get; set; }
-        public string Username { get; set; } = string.Empty;
+        public string Title { get; set; }
     }
 }

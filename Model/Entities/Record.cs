@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MyRecordApp.Model.Entities
 {
@@ -7,9 +6,10 @@ namespace MyRecordApp.Model.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;   
-        public DateTime ReleaseDate { get; set; }
-        public string Tracks { get; set; } = string.Empty;
-        public string CoverUrl { get; set; } = string.Empty;    
+        public string? ReleaseDate { get; set; }
+        public ICollection<Track> Tracks { get; set; } = new List<Track>();
+        public string CoverUrl { get; set; } = string.Empty; 
+        public ICollection<Label> Labels { get; set; } = new List<Label>();       
         public ICollection<Artist> Artists { get; set; } = new List<Artist>();
     }
 }

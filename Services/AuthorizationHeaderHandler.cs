@@ -17,7 +17,8 @@ namespace MyRecordApp.Services
            if(request.Headers.Authorization == null)
             {
                 var token = Settings.Default.AccessToken;
-                request.Headers.Authorization = new AuthenticationHeaderValue("Discogs token=", token);
+                request.Headers.Add("Authorization", "Discogs token=" + token);
+
             }
             return await base.SendAsync(request, cancellationToken);
         }

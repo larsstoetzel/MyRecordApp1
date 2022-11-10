@@ -28,5 +28,15 @@ namespace MyRecordApp.View
         {
 
         }
+
+        private void Button_Click()
+        {
+
+        }
+
+        private void lbTracks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

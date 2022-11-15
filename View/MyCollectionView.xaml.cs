@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MyRecordApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,16 +24,18 @@ namespace MyRecordApp.View
         public MyCollectionView()
         {
             InitializeComponent();
+            DataContext = App.Current.Services.GetService<MyCollectionViewModel>();
         }
 
         private void MyRecords_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
         private void btnAddSearch_Click(object sender, RoutedEventArgs e)
         {
-            RecordAddSearchView recordAddSearchView = new RecordAddSearchView();
-            recordAddSearchView.Show();
+            AddSearchView addSearchView = new AddSearchView();
+            addSearchView.Show();
         }
     }
 }

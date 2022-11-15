@@ -30,9 +30,12 @@ namespace MyRecordApp
             services.AddDbContext<RecordContext>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<AuthorizationHeaderHandler>();
-            services.AddRefitClient<IDiscogsApi>().ConfigureHttpClient(x => x.BaseAddress = new Uri("https://api.discogs.com"))
+            services.AddRefitClient<IDiscogsApi>()
+                .ConfigureHttpClient(x => x.BaseAddress = new Uri("https://api.discogs.com"))
                 .AddHttpMessageHandler<AuthorizationHeaderHandler>();
-            services.AddTransient<SearchViewModel>();
+            services.AddTransient<AddSearchViewModel>();
+            services.AddTransient<RecordDetailsViewModel>();
+            services.AddTransient<MyCollectionViewModel>();
             return services.BuildServiceProvider();
         }
        }

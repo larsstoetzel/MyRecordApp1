@@ -4,20 +4,19 @@ using MyRecordApp.Model;
 using MyRecordApp.Model.Discogs;
 using MyRecordApp.Model.Entities;
 using MyRecordApp.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyRecordApp.ViewModel
 {
-    public class SearchViewModel : ObservableObject
+    public class AddSearchViewModel : ObservableObject
     {
         private readonly IDiscogsApi _discogsApi;
         private readonly RecordContext _recordContext;
-        public SearchViewModel(IDiscogsApi api, RecordContext record)
+        public AddSearchViewModel(IDiscogsApi api, RecordContext record)
         {
+            AddCommand = new AsyncRelayCommand(AddRelease);
             SearchCommand = new AsyncRelayCommand<string>(Search);
             _discogsApi = api;
             _recordContext = record;
@@ -31,7 +30,7 @@ namespace MyRecordApp.ViewModel
                 Data = response.Content.Results;
             }
         }
-        private ICollection<SearchResults> _data;
+        private ICollection<SearchResults> _data = new List<SearchResults>();
         public ICollection<SearchResults> Data
         {
             get => _data;
@@ -59,6 +58,7 @@ namespace MyRecordApp.ViewModel
             }
 
         }
+        public IAsyncRelayCommand AddCommand { get; }
         private async Task AddRelease()
         {
             var item = _data.ElementAtOrDefault(SelectedIndex);
@@ -75,7 +75,7 @@ namespace MyRecordApp.ViewModel
                     Title = release.Content.Title,
                     CoverUrl = release.Content.Thumb,
                 };
-                foreach (var artist in release.Content.Artist)
+                foreach (var artist in release.Content.Artists)
                 {
                     var artistEntity = _recordContext.Artists.SingleOrDefault(x => x.Name == artist.Name); 
                     if(artistEntity == null)
@@ -84,7 +84,7 @@ namespace MyRecordApp.ViewModel
                     }
                     entity.Artists.Add(artistEntity);
                 }
-                foreach(var label in release.Content.Label)
+                foreach(var label in release.Content.Labels)
                 {
                     var labelEntity = _recordContext.Labels.SingleOrDefault(y => y.Name == label.Name);
                     if(labelEntity == null)
@@ -100,8 +100,9 @@ namespace MyRecordApp.ViewModel
                 }
                 _recordContext.Add(entity);
                 _recordContext.SaveChanges();
+                System.Windows.Forms.MessageBox.Show("Erfolgreich");
 
-                
+
             }
 
         }

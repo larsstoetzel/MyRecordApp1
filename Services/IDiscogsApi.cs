@@ -14,7 +14,7 @@ namespace MyRecordApp.Services
         [Get("/database/search?q={query}&format=vinyl")]
         Task<IApiResponse<SearchResponse>> SearchAsync(string query);
 
-        [Get("/release/{id}")]
+        [Get("/releases/{id}")]
         Task<IApiResponse<ReleaseResponse>> GetReleaseAsync(int id);
     }
 }

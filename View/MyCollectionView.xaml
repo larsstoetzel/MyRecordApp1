@@ -4,16 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyRecordApp.View"
+        xmlns:viewmodel="clr-namespace:MyRecordApp.ViewModel"
         mc:Ignorable="d"
         Title="MyCollectionView" Height="600" Width="800"
         Left="800"
         Top="300"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" 
+        d:DataContext="{d:DesignInstance viewmodel:MyCollectionViewModel,IsDesignTimeCreatable=True}">
     <Grid Margin="10">
-        <ListBox x:Name="MyRecords" BorderThickness="4" Margin="0,0,0,81" SelectionChanged="MyRecords_SelectionChanged">
+        <ListView x:Name="MyRecords" BorderThickness="4" Margin="0,0,0,81" SelectionChanged="MyRecords_SelectionChanged"
+                   FontSize="30" ItemsSource="{Binding Data}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="520" DisplayMemberBinding="{Binding Path=Title, Mode=TwoWay}">
+                    </GridViewColumn>
+                </GridView>
+                </ListView.View>
 
-        </ListBox>
-        <Button x:Name="btnAddSearch" Click="btnAddSearch_Click" Content="Add Record" HorizontalAlignment="Center" Margin="0,491,0,0" VerticalAlignment="Top" Height="47" Width="198" FontSize="20"/>
+        </ListView>
+        <Button x:Name="btnAddSearch" Click="btnAddSearch_Click" Content="Add Record" HorizontalAlignment="Center" Margin="0,491,0,0"
+                VerticalAlignment="Top" Height="47" Width="198" FontSize="20"/>
 
     </Grid>
 </Window>

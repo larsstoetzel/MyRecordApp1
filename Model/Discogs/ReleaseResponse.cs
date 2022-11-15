@@ -7,8 +7,8 @@ namespace MyRecordApp.Model.Discogs
         string Title,
         string Thumb,
         string Released,
-        ICollection<ReleaseArtistResponse> Artist,
-        ICollection<ReleaseLabelResponse> Label,
+        ICollection<ReleaseArtistResponse> Artists,
+        ICollection<ReleaseLabelResponse> Labels,
         ICollection<ReleaseTrackResponse> Tracklist);
     public record ReleaseTrackResponse(string Title);  
     public record ReleaseArtistResponse(string Name);

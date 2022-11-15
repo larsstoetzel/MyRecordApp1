@@ -37,7 +37,7 @@ namespace MyRecordApp.View
             {
                 myCollectionView.ShowDialog();
             }
-            
+
         }
 
     }
